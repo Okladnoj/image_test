@@ -28,16 +28,21 @@ class ImagesPage extends StatelessWidget {
             List<ImageModel> images = snapshot.data!;
             return GridView.builder(
               itemCount: images.length,
+              padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
+                mainAxisSpacing: 10,
                 crossAxisSpacing: 10,
               ),
               itemBuilder: (BuildContext context, int index) {
                 ImageModel image = images[index];
-                return FadeInImage.memoryNetwork(
-                  placeholder: kTransparentImage,
-                  image: image.path,
-                  fit: BoxFit.contain,
+                return ColoredBox(
+                  color: Colors.blue.withOpacity(0.2),
+                  child: FadeInImage.memoryNetwork(
+                    placeholder: kTransparentImage,
+                    image: image.path,
+                    fit: BoxFit.contain,
+                  ),
                 );
               },
             );
